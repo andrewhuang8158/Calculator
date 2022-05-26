@@ -1,0 +1,40 @@
+body {
+    background-color: gray;
+}
+#calculator{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#displayBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(177, 161, 161);
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    margin: 30px;
+    text-align: right;
+}
+
+#zeroToNine-container {
+    display: flex;
+    flex-flow: column wrap;
+
+}
+#sevenToNine, #fourToSix, 
+#oneToThree, #zeroToEqual{
+    display: flex;
+    flex-flow: row wrap; 
+}
+
+#base {
+    display: flex;
+    flex-flow: row nowrap;
+}
+#baseButtons {
+    display: flex;
+    flex-flow: column wrap;
+}

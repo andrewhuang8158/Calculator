@@ -1,6 +1,8 @@
 let n1 = 4
 let n2 = 2
 
+let storedResult = '0';
+
 const addButton = document.querySelector("#addButton")
 const minusButton = document.querySelector("#minusButton")
 const multiplyButton = document.querySelector("#multiplyButton")
@@ -16,6 +18,11 @@ const sevenButton = document.querySelector("#sevenButton")
 const eightButton = document.querySelector("#eightButton")
 const nineButton = document.querySelector("#nineButton")
 const zeroButton = document.querySelector("#zeroButton")
+const dotButton = document.querySelector("#dotButton")
+const equalsButton = document.querySelector("#equalsButton")
+const clearButton = document.querySelector("#clearButton")
+
+
 
 
 addButton.onclick = add() 
@@ -49,13 +56,20 @@ operateButton.addEventListener('click', () => {
     
 })
 
-oneButton.onclick = one()
-oneButton.onclick = two()
-oneButton.onclick = three()
-oneButton.onclick = four()
-oneButton.onclick = five()
-oneButton.onclick = six()
-oneButton.onclick = seven()
-oneButton.onclick = eight()
-oneButton.onclick = nine()
-oneButton.onclick = zero()
+oneButton.onclick = function one() {
+    storedResult += "1"
+    console.log(storedResult)
+}
+
+twoButton.onclick = two()
+threeButton.onclick = three()
+fourButton.onclick = four()
+fiveButton.onclick = five()
+sixButton.onclick = six()
+sevenButton.onclick = seven()
+eightButton.onclick = eight()
+nineButton.onclick = nine()
+zeroButton.onclick = zero()
+dotButton.onclick = dot()
+equalsButton.onclick = equals()
+clearButton.onclick = clear()
