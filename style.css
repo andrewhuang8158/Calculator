@@ -1,6 +1,11 @@
 body {
     background-color: gray;
 }
+
+button {
+    width: 60px;
+    height: 60px;
+}
 #calculator{
     display: flex;
     flex-flow: column wrap;
@@ -22,7 +27,6 @@ body {
 #zeroToNine-container {
     display: flex;
     flex-flow: column wrap;
-
 }
 #sevenToNine, #fourToSix, 
 #oneToThree, #zeroToEqual{
@@ -33,8 +37,4 @@ body {
 #base {
     display: flex;
     flex-flow: row nowrap;
-}
-#baseButtons {
-    display: flex;
-    flex-flow: column wrap;
 }
