@@ -1,40 +1,88 @@
 body {
-    background-color: gray;
+    background-color: white;
+    height: 100%;
+}
+
+#storedDisplay {
+    font-size: 16px;
+}
+#thisDisplay{
+    font-size: 24px;
+}
+
+#calculator{
+    width: 300px;
+    background-color: lightgrey;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 10px 0px;
+}
+#screen {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    width: 230px;
+    height: 50px;
+    padding: 20px;
+    text-align: right;
+    margin-bottom: 5px;
 }
 
 button {
+    margin: 5px;
     width: 60px;
     height: 60px;
-}
-#calculator{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-#displayBg {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: rgb(177, 161, 161);
-    width: 300px;
-    height: 200px;
-    padding: 20px;
-    margin: 30px;
-    text-align: right;
-}
-
-#zeroToNine-container {
-    display: flex;
-    flex-flow: column wrap;
-}
-#sevenToNine, #fourToSix, 
-#oneToThree, #zeroToEqual{
-    display: flex;
-    flex-flow: row wrap; 
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 20px;
 }
 
 #base {
-    display: flex;
-    flex-flow: row nowrap;
 }
+
+#sevenToNine, #fourToSix, 
+#oneToThree, #zeroToEqual,
+#baseButtons{
+    display: flex;
+    flex-flow: row nowrap; 
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#clearButton, #deleteButton {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: grey;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 20px;
+    
+  }
+  
+  .fa-github {
+    color: var(--font);
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+  }

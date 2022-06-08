@@ -4,9 +4,6 @@ let thisNumber = ''
 let shouldReset = false
 let currentOperation = null
 
-let active = document.querySelector("activeDisplay")
-let stored = document.querySelector("storedDisplay")
-
 const addButton = document.querySelector("#addButton")
 const minusButton = document.querySelector("#minusButton")
 const multiplyButton = document.querySelector("#multiplyButton")
@@ -14,103 +11,129 @@ const divideButton = document.querySelector("#divideButton")
 const dotButton = document.querySelector("#dotButton")
 const equalsButton = document.querySelector("#equalsButton")
 const clearButton = document.querySelector("#clearButton")
-const operateButton = document.querySelector("#operateButton")
+const deleteButton = document.querySelector("#deleteButton")
 
-let numberButtons = document.querySelectorAll(".numberButton")
-let operatorButtons = document.querySelectorAll(".operatorButton")
-
-// const oneButton = document.querySelector("#oneButton")
-// const twoButton = document.querySelector("#twoButton")
-// const threeButton = document.querySelector("#threeButton")
-// const fourButton = document.querySelector("#fourButton")
-// const fiveButton = document.querySelector("#fiveButton")
-// const sixButton = document.querySelector("#sixButton")
-// const sevenButton = document.querySelector("#sevenButton")
-// const eightButton = document.querySelector("#eightButton")
-// const nineButton = document.querySelector("#nineButton")
-// const zeroButton = document.querySelector("#zeroButton")
-
+const numberButtons = document.querySelectorAll('.numberButton')
+const operatorButtons = document.querySelectorAll('.operatorButton')
 window.addEventListener("keydown", keyboardInput)
 
 
 
-
-
-operateButton.addEventListener('click', () => {
-    let arr = ["add", "minus", "multiply", "divide"]
-    let random = arr[Math.floor(Math.random()*arr.length)]
-    console.log(random)
-})
-
 numberButtons.onclick = function() {
-    addNum(numberButton.textContent)
+    addNumber(button.textContent)
 }
 
-function addNum(number) {
-    if (activeDisplay.textContent == 0 || shouldReset) resetScreen()
-    activeDisplay.textContent += number
-    console.log(activeDisplay)
+operatorButtons.forEach((button) =>
+  button.addEventListener('click', () => addOperator(button.textContent))
+)
+
+dotButton.onclick = function() {
+    addDot()
 }
 
-function resetScreen() {
-    activeDisplay.textContent = ''
+clearButton.onclick = function() {
+    clear()
+}
+
+deleteButton.onclick = function() { 
+    deleteNum()
+}
+
+function resetDisplay() {
+    thisDisplay.textContent = ''
     shouldReset = false
 }
 
+function addNumber(number) {
+    if (thisDisplay.textContent === '0' || shouldReset) resetDisplay()
+    thisDisplay.textContent += number
+}
 
-operatorButtons.onclick = function() { 
-    addOperator(operatorButton.textContent)
+function addDot() {
+    if (thisDisplay.textContent == '' || shouldReset) thisDisplay.textContent = '0'
+    if (thisDisplay.textContent.includes('.'))return
+    thisDisplay.textContent += '.'
+    shouldReset = false
 }
 
 function addOperator (operator) {
     if (currentOperation !== null) equals()
-    firstNumber = activeDisplay.textContent
-    currentOperation = operator.textContent
-    storedDisplay.textContent = `${firstNumber} ${currentOperation}`
+    firstNumber = thisDisplay.textContent
+    storedDisplay.textContent = `${firstNumber} ${operator}`
+
+    currentOperation = operator
     shouldReset = true
 }
 
-dotButton.onclick = function() {
-    addDot(dotButton.textContent)
-}
-
-function addDot() {
-    if (activeDisplay.textContent === '') activeDisplay = '0'
-    if (activeDisplay.textContent.includes('.'))return
-    activeDisplay += '.'
+function deleteNum() {
+    thisDisplay.textContent = thisDisplay.textContent.slice(0,-1)
+    if (thisDisplay.textContent.length == 0) {
+        thisDisplay.textContent = '0'
+    }
 }
 
 function equals() {
-    if (currentOperation == null || shouldReset) return
-    shouldReset == true
-    activeDisplay = `${firstNumber} ${thisNumber}`
-    firstNumber = activeDisplay.textContent
+    if (currentOperation === null || shouldReset) return
+    if (currentOperation === '/' && thisDisplay.textContent === '0') {
+        alert ("You can't divide by 0!")
+        return
+    }
     
+    thisNumber = thisDisplay.textContent
+    thisDisplay.textContent = roundResult(
+        evaluate(currentOperation, firstNumber, thisNumber)
+    )
+    storedDisplay.textContent = `${firstNumber} ${currentOperation} ${thisNumber} =`
+    
+    currentOperation = null
+    shouldReset = true
 }
 
-function deleteNum() {
-    activeDisplay.textContent = activeDisplay.textContent.slice[0]
-}
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000
+  }
+
+function evaluate(operator, a, b) {
+    a = Number(a)
+    b = Number(b)
+    switch(operator){
+        case '+': return add(a,b)
+        case '-': return minus(a,b)
+        case '*': return multiply(a,b)
+        case '/': 
+            if(b ===0) {
+                return null
+            }
+            return divide(a,b)
+        default : return null
+    }
+    }
+
 function clear() { 
-    if (activeDisplay !== '') resetScreen()
-    if (activeDisplay == '') {
-        storedDisplay = ''
+    if (thisDisplay.textContent !== '0') {
+        resetDisplay()
+        thisDisplay.textContent = '0'
+
+    } else {
+        thisDisplay.textContent = '0'
+        storedDisplay.textContent = ''
         firstNumber = ''
         thisNumber = ''
+        currentOperation = null
     }
 }
-// const clear = function() {
-//     activeDisplay = 0
-//     console.log(activeDisplay)
-// }
 
 function keyboardInput (e) { 
-    if (e.key >= 0 && e.key <= 9) addNum(e.key)
-    if (e.key == '.') addDot()
-    if (e.key == 'Backspace') deleteNum();
-    if (e.key == 'Enter' || e.key == '=') equals()
-    if (e.key == '+' || e.key == '*' || e.key == '/' || e.key == '-' ) addOperator(e.key)
+    if (e.key >= 0 && e.key <= 9) addNumber(e.key)
+    if (e.key === '.') addDot()
+    if (e.key === 'Backspace' || e.key === 'Delete') deleteNum()
+    if (e.key === 'Enter' || e.key === '=') equals()
+    if (e.key === 'Escape' || e.key === 'Esc') clear()
+    if (e.key === '+' || e.key === '*' || e.key === '/' || e.key === '-' ) 
+        addOperator(e.key)
 }
+
+
 
 function add(a,b) { 
     return a + b 

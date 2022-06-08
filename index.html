@@ -8,47 +8,56 @@
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-    
     <div id = "calculator"> 
-        <div id = "displayBg"> 
-            
-            <div id = "storedDisplay"> </div>
-            <div id = "activeDisplay"> 0 </div>
+        <div id = "screen"> 
+            <div id = "storedDisplay"></div>
+            <div id = "thisDisplay">0</div>
         </div>
         
         <div id = "base">
-            <div id = "zeroToNine-container">
-                <div id = "sevenToNine">
-                    <button  id = "sevenButton" class = "numberButton"> 7 </button>
-                    <button  id = "eightButton" class = "numberButton"> 8 </button>
-                    <button  id = "nineButton" class = "numberButton"> 9 </button>
-                    <button  id = "divideButton" class = "operatorButton"> ÷ </button>
-                </div>
-                <div id = "fourToSix">
-                    <button  id = "fourButton" class = "numberButton"> 4 </button>
-                    <button  id = "fiveButton" class = "numberButton"> 5 </button>
-                    <button  id = "sixButton" class = "numberButton"> 6 </button>
-                    <button  id = "multiplyButton" class = "operatorButton"> * </button>
-                </div>    
-                <div id = "oneToThree">
-                    <button  id = "oneButton" class = "numberButton"> 1 </button>
-                    <button  id = "twoButton" class = "numberButton"> 2 </button>
-                    <button  id = "threeButton" class = "numberButton"> 3 </button>
-                    <button  id = "minusButton" class = "operatorButton"> - </button>
-                </div>
-                <div id = "zeroToEqual">
-                    <button  id = "zeroButton" class = "numberButton"> 0 </button>
-                    <button  id = "dotButton" class = "numberButton"> . </button>
-                    <button  id = "equalsButton" class = "numberButton"> = </button>
-                    <button  id = "addButton" class = "operatorButton"> + </button>
-                </div>
-            </div>
             <div id = "baseButtons">
-                <button  id = "clearButton" class = "clearButton"> clear </button>
-                <button  id = "operateButton" class = "operateButton"> operate </button>
+                <button  id = "clearButton" class = "fxnButton"> CLEAR </button>
+                <button  id = "deleteButton" class = "fxnButton"> DELETE </button>
             </div>
-    </div>
+            <div id = "sevenToNine">
+                <button  id = "sevenButton" class = "numberButton" >7</button>
+                <button  id = "eightButton" class = "numberButton">8</button>
+                <button  id = "nineButton" class = "numberButton">9</button>
+                <button  id = "divideButton" class = "operatorButton">/</button>
+            </div>
+            <div id = "fourToSix">
+                <button  id = "fourButton" class = "numberButton">4</button>
+                <button  id = "fiveButton" class = "numberButton">5</button>
+                <button  id = "sixButton" class = "numberButton">6</button>
+                <button  id = "multiplyButton" class = "equalsButton">*</button>
+            </div>    
+            <div id = "oneToThree">
+                <button  id = "oneButton" class = "numberButton">1</button>
+                <button  id = "twoButton" class = "numberButton">2</button>
+                <button  id = "threeButton" class = "numberButton">3</button>
+                <button  id = "minusButton" class = "operatorButton">-</button>
+            </div>
+            <div id = "zeroToEqual">
+                <button  id = "zeroButton" class = "numberButton">0</button>
+                <button  id = "dotButton" class = "numberButton">.</button>
+                <button  id = "equalsButton" class = "numberButton">=</button>
+                <button  id = "addButton" class = "operatorButton">+</button>
+            </div>
 
+        </div>
+    </div>
+    <footer class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear())
+          </script>
+          suppynoob1
+        </p>
+        <a href="https://github.com/suppynoob1" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </footer>
     <script src="myscript.js"></script>
 </body>
 </html>
