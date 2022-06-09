@@ -19,13 +19,17 @@ window.addEventListener("keydown", keyboardInput)
 
 
 
-numberButtons.onclick = function() {
-    addNumber(button.textContent)
-}
+numberButtons.forEach((button) =>
+  button.addEventListener('click', () => addNumber(button.textContent))
+)
 
 operatorButtons.forEach((button) =>
   button.addEventListener('click', () => addOperator(button.textContent))
 )
+
+equalsButton.onclick = function() {
+    equals()
+}
 
 dotButton.onclick = function() {
     addDot()
